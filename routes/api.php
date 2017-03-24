@@ -31,5 +31,11 @@ Route::group(['middleware' => ['auth:api']], function() {
 
 	});
 
+	Route::group(['prefix' => 'presidents'], function() {
+
+		Route::get('/', "PresidentsController@index");
+
+	});
+
 });
 

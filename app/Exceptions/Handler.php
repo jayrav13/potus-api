@@ -55,7 +55,7 @@ class Handler extends ExceptionHandler
                 $data['message'] = $exception->getMessage();
             }
 
-            return response()->json($data, 200);
+            return response()->json($data, ( method_exists($exception, "getStatusCode") ? $exception->getStatusCode() : 200 ));
         }
         else
         {

@@ -14,9 +14,18 @@ use App;
 class UsersController extends Controller
 {
 
+	/**
+	 *	get
+	 *
+	 *	Return a user.
+	 */
 	public function get(Request $request)
 	{
-		return $request->user();
+		$user = $request->user();
+		return [
+			"user" => $user,
+			"api_token" => $user->api_token
+		];
 	}
 
 	public function create(Request $request)
