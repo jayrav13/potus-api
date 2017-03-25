@@ -370,7 +370,7 @@ The documentation moving forward will <code>NOT</code> include this denoted head
 <tr>
 <td><code class="prettyprint">q</code></td>
 <td>false</td>
-<td>Query the name of a US president.<br />This executes a <code class="prettyprint">SELECT * FROM presidents WHERE name LIKE &#39;%?%&#39;</code> query, where <code class="prettyprint">?</code> is the value for <code class="prettyprint">q</code>.</td>
+<td>Query the name of a US president.<br /><br />This searches a vice president&rsquo;s name given a search query <code class="prettyprint">q</code>.</td>
 </tr>
 </tbody></table>
 
@@ -441,7 +441,7 @@ The documentation moving forward will <code>NOT</code> include this denoted head
 <tr>
 <td><code class="prettyprint">q</code></td>
 <td>false</td>
-<td>Query the name of a US vice president.<br />This executes a <code class="prettyprint">SELECT * FROM vice_presidents WHERE name LIKE &#39;%?%&#39;</code> query, where <code class="prettyprint">?</code> is the value for <code class="prettyprint">q</code>.</td>
+<td>Query the name of a US vice president.<br /><br />This searches a president&rsquo;s name given a search query <code class="prettyprint">q</code>.</td>
 </tr>
 </tbody></table>
 
