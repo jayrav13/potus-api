@@ -40,10 +40,7 @@ class ScrapePresidents extends Command
     {
         $output = [];
         exec("python storage/scripts/presidents_scrape.py", $output);
-
-        $data = json_decode($output[0]);
-
-        var_dump( (array) $data[0]);
+        $data = json_decode( implode(" ", $output) );
 
         foreach($data as $key => $value)
         {

@@ -27,6 +27,12 @@ rows = [ [y for y in x.xpath('td')] for x in table.xpath('tr') ]
 max_len = max([len(x) for x in rows])
 
 def is_int(num):
+	"""
+	is_int
+
+	Confirms if an input is numeric.
+	"""
+
 	try:
 		x = int(num)
 		return True
@@ -48,4 +54,4 @@ for row in rows:
 		}
 		output.append(data)
 
-print json.dumps(output)
+print json.dumps(output, indent=4, sort_keys=True)

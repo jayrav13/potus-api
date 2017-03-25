@@ -19,7 +19,7 @@ class CreatePresidentsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('image')->nullable();
-            $table->integer('number');
+            $table->integer('number')->unique();
             $table->string('previous_office')->nullable();
             $table->string('presidency_url')->nullable();
             $table->string('party_affiliation')->nullable();
