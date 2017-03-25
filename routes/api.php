@@ -21,6 +21,12 @@ Route::group(['middleware' => []], function() {
 
 	});
 
+	Route::group(['prefix' => 'heartbeat'], function() {
+
+		Route::get('/', "GenericController@heartbeat");
+
+	});
+
 });
 
 Route::group(['middleware' => ['auth:api']], function() {
