@@ -22,10 +22,10 @@ class UsersController extends Controller
 	public function get(Request $request)
 	{
 		$user = $request->user();
-		return [
+		return Response::json([
 			"user" => $user,
 			"api_token" => $user->api_token
-		];
+		], 200);
 	}
 
 	public function create(Request $request)
@@ -38,7 +38,10 @@ class UsersController extends Controller
 			$user->password = Hash::make(Input::get('password'));
 			$user->api_token = str_random(60);
 			$user->save();
-			return Response::json($user, 200);
+			return Response::json([
+				"user" => $user,
+				"api_token" => $user->api_token
+			], 200);
 		}
 		else
 		{
