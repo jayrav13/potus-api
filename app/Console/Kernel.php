@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\ScrapePresidents::class
+        Commands\ScrapePresidents::class,
+        Commands\ScrapeVicePresidents::class,
     ];
 
     /**
