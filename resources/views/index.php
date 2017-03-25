@@ -312,7 +312,7 @@ The documentation moving forward will <code>NOT</code> include this denoted head
 
 <h1 id="leadership">Leadership</h1>
 
-<h2 id="president">President</h2>
+<h2 id="presidents">Presidents</h2>
 
 <blockquote>
 <p>Return all US presidents:</p>
@@ -354,9 +354,11 @@ The documentation moving forward will <code>NOT</code> include this denoted head
   </span><span class="err">...</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>First, let&rsquo;s take a look at all US presidents. To return them, simply use the following endpoint:</p>
+<p>Let&rsquo;s take a look at endpoints for querying POTUS:</p>
 
-<p><code class="prettyprint">GET /api/presidents</code></p>
+<h3 id="get-api-presidents"><code class="prettyprint">GET /api/presidents</code></h3>
+
+<p>This endpoint&rsquo;s primary use case is to return ALL US presidents as an array. It also accepts the following query string parameters to refine your query:</p>
 
 <table><thead>
 <tr>
@@ -366,18 +368,95 @@ The documentation moving forward will <code>NOT</code> include this denoted head
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
+<td><code class="prettyprint">q</code></td>
 <td>false</td>
-<td>Query the name of a US president.</td>
-</tr>
-<tr>
-<td>number</td>
-<td>false</td>
-<td>Return a specific US president given their numeric succession (i.e. nth POTUS).</td>
+<td>Query the name of a US president.<br />This executes a <code class="prettyprint">SELECT * FROM presidents WHERE name LIKE &#39;%?%&#39;</code> query, where <code class="prettyprint">?</code> is the value for <code class="prettyprint">q</code>.</td>
 </tr>
 </tbody></table>
 
-<h1 id="vice-presidents">Vice Presidents</h1>
+<p>The response from this endpoint will always be an array.</p>
+
+<h3 id="get-api-presidents-number"><code class="prettyprint">GET /api/presidents/{number}</code></h3>
+
+<p>This endpoint returns a POTUS given his or her number in succession. For example:</p>
+
+<ul>
+<li><code class="prettyprint">GET /api/presidents/1</code> returns <strong>George Washington</strong>.</li>
+<li><code class="prettyprint">GET /api/presidents/16</code> returns <strong>Abraham Lincoln</strong>.</li>
+</ul>
+
+<p>The response from this endpoint will always be a single object.</p>
+
+<h2 id="vice-presidents">Vice Presidents</h2>
+
+<blockquote>
+<p>Return the 1st US vice president:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl -i -X GET https://potus-api.herokuapp.com/api/vice_presidents/1
+</code></pre>
+<blockquote>
+<p>Sample JSON response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas Jefferson"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https//upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Thomas_Jefferson_by_Rembrandt_Peale%2C_1800.jpg/140px-Thomas_Jefferson_by_Rembrandt_Peale%2C_1800.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"previous_office"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1st United States Secretary of State"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"party_affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Democratic-Republican"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1797-03-04 00:00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1801-03-04 00:00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-25 01:57:58"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-25 01:57:58"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"presidents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Adams"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https//upload.wikimedia.org/wikipedia/commons/thumb/d/df/Official_Presidential_portrait_of_John_Adams_%28by_John_Trumbull%2C_circa_1792%29.jpg/165px-Official_Presidential_portrait_of_John_Adams_%28by_John_Trumbull%2C_circa_1792%29.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"previous_office"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1st Vice President of the United States"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"presidency_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Presidency_of_John_Adams"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"party_affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Federalist"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1797-03-04 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1801-03-04 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-25 01:57:57"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-25 01:57:57"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Let&rsquo;s take a look at endpoints for querying VPOTUS:</p>
+
+<h3 id="get-api-vice_presidents"><code class="prettyprint">GET /api/vice_presidents</code></h3>
+
+<p>This endpoint&rsquo;s primary use case is to return ALL US vice presidents as an array. It also accepts the following query string parameters to refine your query:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">q</code></td>
+<td>false</td>
+<td>Query the name of a US vice president.<br />This executes a <code class="prettyprint">SELECT * FROM vice_presidents WHERE name LIKE &#39;%?%&#39;</code> query, where <code class="prettyprint">?</code> is the value for <code class="prettyprint">q</code>.</td>
+</tr>
+</tbody></table>
+
+<p>The response from this endpoint will always be an array.</p>
+
+<h3 id="get-api-vice_presidents-number"><code class="prettyprint">GET /api/vice_presidents/{number}</code></h3>
+
+<p>This endpoint returns a VPOTUS given his or her number in succession. For example:</p>
+
+<ul>
+<li><code class="prettyprint">GET /api/vice_presidents/1</code> returns <strong>John Adams</strong>.</li>
+<li><code class="prettyprint">GET /api/vice_presidents/16</code> returns <strong>Andrew Johnson</strong>.</li>
+</ul>
+
+<p>The response from this endpoint will always be a single object.</p>
 
       </div>
       <div class="dark-box">

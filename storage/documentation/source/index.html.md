@@ -82,7 +82,7 @@ This is a great way to confirm that everything in the Register phase was success
 
 # Leadership
 
-## President
+## Presidents
 
 > Return all US presidents:
 
@@ -126,14 +126,84 @@ $ curl -i -X GET http://potus-api.herokuapp.com/api/presidents
 ]
 ```
 
-First, let's take a look at all US presidents. To return them, simply use the following endpoint:
+Let's take a look at endpoints for querying POTUS:
 
-`GET /api/presidents`
+### `GET /api/presidents`
+
+This endpoint's primary use case is to return ALL US presidents as an array. It also accepts the following query string parameters to refine your query:
 
 Parameter | Required | Description
 --------- | ------- | -----------
-name | false | Query the name of a US president.
-number | false | Return a specific US president given their numeric succession (i.e. nth POTUS).
+`q` | false | Query the name of a US president.<br />This executes a `SELECT * FROM presidents WHERE name LIKE '%?%'` query, where `?` is the value for `q`.
 
-# Vice Presidents
+The response from this endpoint will always be an array.
 
+### `GET /api/presidents/{number}`
+
+This endpoint returns a POTUS given his or her number in succession. For example:
+
+- `GET /api/presidents/1` returns <strong>George Washington</strong>.
+- `GET /api/presidents/16` returns <strong>Abraham Lincoln</strong>.
+
+The response from this endpoint will always be a single object.
+
+## Vice Presidents
+
+> Return the 1st US vice president:
+
+```shell
+$ curl -i -X GET https://potus-api.herokuapp.com/api/vice_presidents/1
+```
+
+> Sample JSON response:
+
+```json
+{
+  "id": 2,
+  "name": "Thomas Jefferson",
+  "image": "https//upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Thomas_Jefferson_by_Rembrandt_Peale%2C_1800.jpg/140px-Thomas_Jefferson_by_Rembrandt_Peale%2C_1800.jpg",
+  "number": 2,
+  "previous_office": "1st United States Secretary of State",
+  "party_affiliation": "Democratic-Republican",
+  "start_date": "1797-03-04 00:00:00",
+  "end_date": "1801-03-04 00:00:00",
+  "created_at": "2017-03-25 01:57:58",
+  "updated_at": "2017-03-25 01:57:58",
+  "presidents": [
+    {
+      "id": 2,
+      "name": "John Adams",
+      "image": "https//upload.wikimedia.org/wikipedia/commons/thumb/d/df/Official_Presidential_portrait_of_John_Adams_%28by_John_Trumbull%2C_circa_1792%29.jpg/165px-Official_Presidential_portrait_of_John_Adams_%28by_John_Trumbull%2C_circa_1792%29.jpg",
+      "number": 2,
+      "previous_office": "1st Vice President of the United States",
+      "presidency_url": "https://en.wikipedia.org/wiki/Presidency_of_John_Adams",
+      "party_affiliation": "Federalist",
+      "start_date": "1797-03-04 00:00:00",
+      "end_date": "1801-03-04 00:00:00",
+      "created_at": "2017-03-25 01:57:57",
+      "updated_at": "2017-03-25 01:57:57"
+    }
+  ]
+}
+```
+
+Let's take a look at endpoints for querying VPOTUS:
+
+### `GET /api/vice_presidents`
+
+This endpoint's primary use case is to return ALL US vice presidents as an array. It also accepts the following query string parameters to refine your query:
+
+Parameter | Required | Description
+--------- | ------- | -----------
+`q` | false | Query the name of a US vice president.<br />This executes a `SELECT * FROM vice_presidents WHERE name LIKE '%?%'` query, where `?` is the value for `q`.
+
+The response from this endpoint will always be an array.
+
+### `GET /api/vice_presidents/{number}`
+
+This endpoint returns a VPOTUS given his or her number in succession. For example:
+
+- `GET /api/vice_presidents/1` returns <strong>John Adams</strong>.
+- `GET /api/vice_presidents/16` returns <strong>Andrew Johnson</strong>.
+
+The response from this endpoint will always be a single object.

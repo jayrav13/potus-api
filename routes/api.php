@@ -40,12 +40,14 @@ Route::group(['middleware' => ['auth:api']], function() {
 	Route::group(['prefix' => 'presidents'], function() {
 
 		Route::get('/', "PresidentsController@index");
+		Route::get('/{number}', "PresidentsController@get");
 
 	});
 
 	Route::group(['prefix' => 'vice_presidents'], function() {
 
 		Route::get('/', "VicePresidentsController@index");
+		Route::get('/{number}', "VicePresidentsController@get");
 
 	});
 
