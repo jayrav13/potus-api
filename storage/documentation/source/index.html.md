@@ -134,7 +134,7 @@ This endpoint's primary use case is to return ALL US presidents as an array. It 
 
 Parameter | Required | Description
 --------- | ------- | -----------
-`q` | false | Query the name of a US president.<br />This executes a `SELECT * FROM presidents WHERE name LIKE '%?%'` query, where `?` is the value for `q`.
+`q` | false | Query the name of a US president.<br /><br />This searches a vice president's name given a search query `q`.
 
 The response from this endpoint will always be an array.
 
@@ -195,7 +195,7 @@ This endpoint's primary use case is to return ALL US vice presidents as an array
 
 Parameter | Required | Description
 --------- | ------- | -----------
-`q` | false | Query the name of a US vice president.<br />This executes a `SELECT * FROM vice_presidents WHERE name LIKE '%?%'` query, where `?` is the value for `q`.
+`q` | false | Query the name of a US vice president.<br /><br />This searches a president's name given a search query `q`.
 
 The response from this endpoint will always be an array.
 
