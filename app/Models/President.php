@@ -20,4 +20,9 @@ class President extends Model
 		'end_date'
 	];
 
+	public function cabinet_members()
+	{
+		return $this->hasMany('App\Models\CabinetMember', 'president_id', 'id');
+	}
+
 }

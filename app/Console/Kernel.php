@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\ScrapePresidents::class,
         Commands\ScrapeVicePresidents::class,
+        Commands\ScrapeCabinets::class,
         Commands\BuildDocumentation::class,
     ];
 
