@@ -458,6 +458,41 @@ The documentation moving forward will <code>NOT</code> include this denoted head
 
 <p>The response from this endpoint will always be a single object.</p>
 
+<h2 id="cabinet-members">Cabinet Members</h2>
+
+<blockquote>
+<p>Return the Cabinet Members of the 16th president:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl -i -X GET https://potus-api.herokuapp.com/api/presidents/16/cabinet_members
+</code></pre>
+<blockquote>
+<p>Sample JSON Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">177</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Simon Cameron"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"department_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Secretary of War"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"department_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/wiki/United_States_Secretary_of_War"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"permalink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secretary-of-war"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Simon_Cameron"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"years"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1861-1862"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1861-03-05 00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1862-01-14 00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"president_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-26 07:37:17"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-26 07:37:17"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Next, let&rsquo;s take a look at Cabinet Members. A president&rsquo;s cabinet can be queried by the following endpoint:</p>
+
+<h3 id="get-api-presidents-number-cabinet_members">`GET /api/presidents/{number}/cabinet_members</h3>
+
+<p>The response from this endpoint will always be an array.</p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">

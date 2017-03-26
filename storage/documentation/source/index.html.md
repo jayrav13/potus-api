@@ -207,3 +207,40 @@ This endpoint returns a VPOTUS given his or her number in succession. For exampl
 - `GET /api/vice_presidents/16` returns <strong>Andrew Johnson</strong>.
 
 The response from this endpoint will always be a single object.
+
+## Cabinet Members
+
+> Return the Cabinet Members of the 16th president:
+
+```shell
+$ curl -i -X GET https://potus-api.herokuapp.com/api/presidents/16/cabinet_members
+```
+
+> Sample JSON Response:
+
+```json
+[
+  {...},
+  {
+    "id": 177,
+    "name": "Simon Cameron",
+    "department_name": "Secretary of War",
+    "department_url": "/wiki/United_States_Secretary_of_War",
+    "permalink": "secretary-of-war",
+    "url": "https://en.wikipedia.org/wiki/Simon_Cameron",
+    "years": "1861-1862",
+    "start_date": "1861-03-05 00:00:00",
+    "end_date": "1862-01-14 00:00:00",
+    "president_id": 16,
+    "created_at": "2017-03-26 07:37:17",
+    "updated_at": "2017-03-26 07:37:17"
+  },
+  {...}
+]
+```
+
+Next, let's take a look at Cabinet Members. A president's cabinet can be queried by the following endpoint:
+
+### `GET /api/presidents/{number}/cabinet_members
+
+The response from this endpoint will always be an array.

@@ -40,7 +40,13 @@ Route::group(['middleware' => ['auth:api']], function() {
 	Route::group(['prefix' => 'presidents'], function() {
 
 		Route::get('/', "PresidentsController@index");
-		Route::get('/{number}', "PresidentsController@get");
+
+		Route::group(['prefix' => '{number}'], function() {
+
+			Route::get("/", "PresidentsController@get");
+			Route::get("/cabinet_members", "CabinetMembersController@index");
+
+		});
 
 	});
 
