@@ -25,4 +25,9 @@ class President extends Model
 		return $this->hasMany('App\Models\CabinetMember', 'president_id', 'id');
 	}
 
+	public function polls()
+	{
+		return $this->hasMany('App\Models\Poll', 'president_id', 'id');
+	}
+
 }

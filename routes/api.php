@@ -57,5 +57,11 @@ Route::group(['middleware' => ['auth:api']], function() {
 
 	});
 
+	Route::group(['prefix' => 'polls'], function() {
+
+		Route::get('/', "PollsController@index");
+
+	});
+
 });
 

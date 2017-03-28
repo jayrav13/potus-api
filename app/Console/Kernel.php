@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
         Commands\ScrapeVicePresidents::class,
         Commands\ScrapeCabinets::class,
         Commands\BuildDocumentation::class,
+        Commands\ScrapePolls::class,
     ];
 
     /**
