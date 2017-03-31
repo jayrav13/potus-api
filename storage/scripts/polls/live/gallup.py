@@ -12,17 +12,14 @@ tree = html.document_fromstring(response.text)
 
 table = tree.xpath('//div[@id="rbnData"]/div/table')[0].xpath('tbody')[0].xpath('tr')
 
-output = []
+output = {}
 
 for row in table:
 	data = [x for x in row.xpath('td')]
-	element = {
-		data[0].text_content().lower().replace(" ", "_"): {
-			"name": data[0].text_content(),
-			"value": float(data[1].text_content().replace("%", "").replace("$", "")),
-			"change": float(data[2].text_content()) if data[2].text_content() != "-" else 0
+	output[data[0].text_content().lower().replace(" ", "_")] = {
+		"name": data[0].text_content(),
+		"value": float(data[1].text_content().replace("%", "").replace("$", "")),
+		"change": float(data[2].text_content()) if data[2].text_content() != "-" else 0
 		}
-	}
-	output.append(element)
 
 print json.dumps(output)

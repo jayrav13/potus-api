@@ -489,9 +489,91 @@ The documentation moving forward will <code>NOT</code> include this denoted head
 </span></code></pre>
 <p>Next, let&rsquo;s take a look at Cabinet Members. A president&rsquo;s cabinet can be queried by the following endpoint:</p>
 
-<h3 id="get-api-presidents-number-cabinet_members">`GET /api/presidents/{number}/cabinet_members</h3>
+<h3 id="get-api-presidents-number-cabinet_members"><code class="prettyprint">GET /api/presidents/{number}/cabinet_members</code></h3>
 
 <p>The response from this endpoint will always be an array.</p>
+
+<h1 id="polls">Polls</h1>
+
+<blockquote>
+<p>Retrieve all polls, stored and live:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl -i -X GET https://potus-api.herokuapp.com/api/polls?live<span class="o">=</span><span class="nb">true</span>
+</code></pre>
+<blockquote>
+<p>Sample JSON response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"live"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"gallup"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"real_unemployment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"change"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Real Unemployment"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"recent"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"polling_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gallup Poll"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"approval"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"disapproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"unsure"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"net"</span><span class="p">:</span><span class="w"> </span><span class="mi">-21</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sample_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"population"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All Adults"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-24 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-26 00:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"president_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-28 05:11:05"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-28 05:11:05"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"president"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Donald Trump"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https//upload.wikimedia.org/wikipedia/commons/thumb/5/53/Donald_Trump_official_portrait_%28cropped%29.jpg/165px-Donald_Trump_official_portrait_%28cropped%29.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"previous_office"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chairman of The Trump Organization"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"presidency_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://en.wikipedia.org/wiki/Presidency_of_Donald_Trump"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"party_affiliation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Republican"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-20 00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-25 01:57:57"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-25 01:57:57"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Next, we&rsquo;ll take a look at presidential polling data. This API scrapes the results of various polls from <a href="https://en.wikipedia.org/wiki/United_States_presidential_approval_rating">Wikipedia&rsquo;s &ldquo;United States presidential approval rating&rdquo;</a> every hour and stores them for fast access. A lot of relevant data is included, such as date range for the polling result, number of individuals polled, and more is included as well. To access, simply use the following request:</p>
+
+<h3 id="get-api-polls"><code class="prettyprint">GET /api/polls</code></h3>
+
+<p>Along with this open request, there are optional parameters that can be included:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">live</code></td>
+<td>false</td>
+<td><code class="prettyprint">true</code></td>
+<td>Scrapes all available polling data in real-time.</td>
+</tr>
+</tbody></table>
+
+<p>With live data, each dataset for a live poll will have a unique, predictable data structure.</p>
+
+<aside class="warning">
+NOTE: As a result of using the `live` parameter, the query will take longer because data is being retrieved and scraped in real-time.
+</aside>
 
       </div>
       <div class="dark-box">

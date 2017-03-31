@@ -241,6 +241,82 @@ $ curl -i -X GET https://potus-api.herokuapp.com/api/presidents/16/cabinet_membe
 
 Next, let's take a look at Cabinet Members. A president's cabinet can be queried by the following endpoint:
 
-### `GET /api/presidents/{number}/cabinet_members
+### `GET /api/presidents/{number}/cabinet_members`
 
 The response from this endpoint will always be an array.
+
+# Polls
+
+> Retrieve all polls, stored and live:
+
+```shell
+$ curl -i -X GET https://potus-api.herokuapp.com/api/polls?live=true
+```
+
+> Sample JSON response:
+
+```json
+{
+  "live": {
+    "gallup": {
+      "real_unemployment": {
+        "change": -0.2,
+        "name": "Real Unemployment",
+        "value": 9.2
+      },
+      ...
+    }
+  },
+  "recent": [
+    {
+      "id": 1,
+      "polling_group": "Gallup Poll",
+      "approval": 36,
+      "disapproval": 57,
+      "unsure": 7,
+      "net": -21,
+      "sample_size": 1500,
+      "population": "All Adults",
+      "start_date": "2017-03-24 00:00:00",
+      "end_date": "2017-03-26 00:00:00",
+      "president_id": 45,
+      "created_at": "2017-03-28 05:11:05",
+      "updated_at": "2017-03-28 05:11:05",
+      "president": {
+        "id": 45,
+        "name": "Donald Trump",
+        "image": "https//upload.wikimedia.org/wikipedia/commons/thumb/5/53/Donald_Trump_official_portrait_%28cropped%29.jpg/165px-Donald_Trump_official_portrait_%28cropped%29.jpg",
+        "number": 45,
+        "previous_office": "Chairman of The Trump Organization",
+        "presidency_url": "https://en.wikipedia.org/wiki/Presidency_of_Donald_Trump",
+        "party_affiliation": "Republican",
+        "start_date": "2017-01-20 00:00:00",
+        "end_date": null,
+        "created_at": "2017-03-25 01:57:57",
+        "updated_at": "2017-03-25 01:57:57"
+      }
+    },
+    ...
+  ]
+}
+```
+
+Next, we'll take a look at presidential polling data. This API scrapes the results of various polls from [Wikipedia's "United States presidential approval rating"](https://en.wikipedia.org/wiki/United_States_presidential_approval_rating) every hour and stores them for fast access. A lot of relevant data is included, such as date range for the polling result, number of individuals polled, and more is included as well. To access, simply use the following request:
+
+### `GET /api/polls`
+
+Along with this open request, there are optional parameters that can be included:
+
+Parameter | Required | Values |Description
+--------- | ------- | ------ | -----------
+`live` | false | `true` | Scrapes all available polling data in real-time.
+
+With live data, each dataset for a live poll will have a unique, predictable data structure.
+
+<aside class="warning">
+NOTE: As a result of using the `live` parameter, the query will take longer because data is being retrieved and scraped in real-time.
+</aside>
+
+
+
+

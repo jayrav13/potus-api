@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\President;
 use App\Models\Poll;
+use DB;
 
 class ScrapePolls extends Command
 {
@@ -39,18 +40,24 @@ class ScrapePolls extends Command
      */
     public function handle()
     {
-        $output = [];
-        exec("python storage/scripts/polls/recent_poll_scrape.py", $output);
-        $data = json_decode( implode(" ", $output) );
 
-        $president = President::orderBy('number', 'desc')->first();
+        DB::transaction(function() {
 
-        foreach($data as $key => $value)
-        {
-            $poll = new Poll;
-            $poll->fill( (array) $value );
-            $president->polls()->save($poll);
-        }
+            $output = [];
+            exec("python storage/scripts/polls/recent_poll_scrape.py", $output);
+            $data = json_decode( implode(" ", $output) );
+
+            $president = President::orderBy('number', 'desc')->first();
+            Poll::truncate();
+
+            foreach($data as $key => $value)
+            {
+                $poll = new Poll;
+                $poll->fill( (array) $value );
+                $president->polls()->save($poll);
+            }
+
+        });
 
     }
 }
