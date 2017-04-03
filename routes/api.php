@@ -13,52 +13,99 @@ use Illuminate\Http\Request;
 |
 */
 
+/**
+ *	/
+ *
+ *	Unauthenticated routes.
+ */
 Route::group(['middleware' => []], function() {
 
+	/**
+	 *	/users
+	 *
+	 *	All User routes.
+	 */
 	Route::group(['prefix' => 'users'], function() {
-
 		Route::post('/', "UsersController@create");
-
 	});
 
+	/** 
+	 *	/heartbeat
+	 *
+	 *	All health check routes.
+	 */
 	Route::group(['prefix' => 'heartbeat'], function() {
-
 		Route::get('/', "GenericController@heartbeat");
-
 	});
 
 });
 
+/**
+ *	["middleware" => ["auth:api"]]
+ *
+ *	Authenticated routes.
+ */
 Route::group(['middleware' => ['auth:api']], function() {
 
+	/**
+	 *	/users
+	 *
+	 *	All User routes.
+	 */
 	Route::group(['prefix' => 'users'], function() {
-
 		Route::get('/', "UsersController@get");
-
 	});
 
+	/**
+	 *	/presidents
+	 *
+	 *	All Presidents routes.
+	 */
 	Route::group(['prefix' => 'presidents'], function() {
 
+		// Return all US presidents.
 		Route::get('/', "PresidentsController@index");
 
+		// Routes for a specific US president.
 		Route::group(['prefix' => '{number}'], function() {
 
+			// Return a specific US president.
 			Route::get("/", "PresidentsController@get");
-			Route::get("/cabinet_members", "CabinetMembersController@index");
+
+			// Return a specific US president's cabinet.
+			Route::group(['prefix' => 'cabinet'], function() {
+				Route::get("/", "CabinetMembersController@presidents");
+			});
 
 		});
 
 	});
 
+	/**
+	 *	/vice_presidents
+	 *
+	 *	All Vice Presidents routes.
+	 */
 	Route::group(['prefix' => 'vice_presidents'], function() {
 
+		// Return all US vice presidents.
 		Route::get('/', "VicePresidentsController@index");
-		Route::get('/{number}', "VicePresidentsController@get");
+
+		// Return a specific US vice president.
+		Route::group(['prefix' => '{number}'], function() {
+			Route::get('/', "VicePresidentsController@get");
+		});
 
 	});
 
+	/**
+	 *	/polls
+	 *
+	 *	Al President poll data.
+	 */
 	Route::group(['prefix' => 'polls'], function() {
 
+		// Get all polls.
 		Route::get('/', "PollsController@index");
 
 	});
