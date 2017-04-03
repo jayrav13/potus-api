@@ -463,7 +463,7 @@ The documentation moving forward will <code>NOT</code> include this denoted head
 <blockquote>
 <p>Return the Cabinet Members of the 16th president:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl -i -X GET https://potus-api.herokuapp.com/api/presidents/16/cabinet_members
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl -i -X GET https://potus-api.herokuapp.com/api/presidents/16/cabinet
 </code></pre>
 <blockquote>
 <p>Sample JSON Response:</p>
@@ -489,7 +489,7 @@ The documentation moving forward will <code>NOT</code> include this denoted head
 </span></code></pre>
 <p>Next, let&rsquo;s take a look at Cabinet Members. A president&rsquo;s cabinet can be queried by the following endpoint:</p>
 
-<h3 id="get-api-presidents-number-cabinet_members"><code class="prettyprint">GET /api/presidents/{number}/cabinet_members</code></h3>
+<h3 id="get-api-presidents-number-cabinet"><code class="prettyprint">GET /api/presidents/{number}/cabinet</code></h3>
 
 <p>The response from this endpoint will always be an array.</p>
 
@@ -547,7 +547,7 @@ The documentation moving forward will <code>NOT</code> include this denoted head
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Next, we&rsquo;ll take a look at presidential polling data. This API scrapes the results of various polls from <a href="https://en.wikipedia.org/wiki/United_States_presidential_approval_rating">Wikipedia&rsquo;s &ldquo;United States presidential approval rating&rdquo;</a> every hour and stores them for fast access. A lot of relevant data is included, such as date range for the polling result, number of individuals polled, and more is included as well. To access, simply use the following request:</p>
+<p>Next, we&rsquo;ll take a look at presidential polling data. This API scrapes the results of various polls from <a href="https://en.wikipedia.org/wiki/United_States_presidential_approval_rating">Wikipedia&rsquo;s &ldquo;United States presidential approval rating&rdquo;</a> <strong>every hour</strong> and stores them for fast access. A lot of relevant data is included, such as date range for the polling result, number of individuals polled, and more is included as well. To access, simply use the following request:</p>
 
 <h3 id="get-api-polls"><code class="prettyprint">GET /api/polls</code></h3>
 
@@ -574,6 +574,20 @@ The documentation moving forward will <code>NOT</code> include this denoted head
 <aside class="warning">
 NOTE: As a result of using the `live` parameter, the query will take longer because data is being retrieved and scraped in real-time.
 </aside>
+
+<p>Available Live Polls:</p>
+
+<table><thead>
+<tr>
+<th>Poll</th>
+<th>Source</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Gallup Poll</td>
+<td><code class="prettyprint">http://www.gallup.com/poll/201617/gallup-daily-trump-job-approval.aspx</code></td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">

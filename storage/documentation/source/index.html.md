@@ -213,7 +213,7 @@ The response from this endpoint will always be a single object.
 > Return the Cabinet Members of the 16th president:
 
 ```shell
-$ curl -i -X GET https://potus-api.herokuapp.com/api/presidents/16/cabinet_members
+$ curl -i -X GET https://potus-api.herokuapp.com/api/presidents/16/cabinet
 ```
 
 > Sample JSON Response:
@@ -241,7 +241,7 @@ $ curl -i -X GET https://potus-api.herokuapp.com/api/presidents/16/cabinet_membe
 
 Next, let's take a look at Cabinet Members. A president's cabinet can be queried by the following endpoint:
 
-### `GET /api/presidents/{number}/cabinet_members`
+### `GET /api/presidents/{number}/cabinet`
 
 The response from this endpoint will always be an array.
 
@@ -301,7 +301,7 @@ $ curl -i -X GET https://potus-api.herokuapp.com/api/polls?live=true
 }
 ```
 
-Next, we'll take a look at presidential polling data. This API scrapes the results of various polls from [Wikipedia's "United States presidential approval rating"](https://en.wikipedia.org/wiki/United_States_presidential_approval_rating) every hour and stores them for fast access. A lot of relevant data is included, such as date range for the polling result, number of individuals polled, and more is included as well. To access, simply use the following request:
+Next, we'll take a look at presidential polling data. This API scrapes the results of various polls from [Wikipedia's "United States presidential approval rating"](https://en.wikipedia.org/wiki/United_States_presidential_approval_rating) <strong>every hour</strong> and stores them for fast access. A lot of relevant data is included, such as date range for the polling result, number of individuals polled, and more is included as well. To access, simply use the following request:
 
 ### `GET /api/polls`
 
@@ -317,6 +317,10 @@ With live data, each dataset for a live poll will have a unique, predictable dat
 NOTE: As a result of using the `live` parameter, the query will take longer because data is being retrieved and scraped in real-time.
 </aside>
 
+Available Live Polls:
 
+Poll | Source
+--------- | -------
+Gallup Poll | `http://www.gallup.com/poll/201617/gallup-daily-trump-job-approval.aspx`
 
 
