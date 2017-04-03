@@ -585,7 +585,7 @@ NOTE: As a result of using the `live` parameter, the query will take longer beca
 </thead><tbody>
 <tr>
 <td>Gallup Poll</td>
-<td><code class="prettyprint">http://www.gallup.com/poll/201617/gallup-daily-trump-job-approval.aspx</code></td>
+<td><a href="https://goo.gl/uIQWEA">https://goo.gl/uIQWEA</a></td>
 </tr>
 </tbody></table>
 

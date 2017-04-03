@@ -321,6 +321,6 @@ Available Live Polls:
 
 Poll | Source
 --------- | -------
-Gallup Poll | `http://www.gallup.com/poll/201617/gallup-daily-trump-job-approval.aspx`
+Gallup Poll | [https://goo.gl/uIQWEA](https://goo.gl/uIQWEA)
 
 
