@@ -50,7 +50,7 @@ class ScrapeCabinets extends Command
 
             // Execute the Python script and parse data out of it.
             $output = [];
-            exec("python storage/scripts/cabinet_scrape.py {$president->presidency_url} {$president->number}", $output);
+            exec("python storage/scripts/leadership/cabinet_scrape.py {$president->presidency_url} {$president->number}", $output);
             $data = json_decode($output[0]);
 
             // Iterate through every member and persist.

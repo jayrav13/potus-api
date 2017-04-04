@@ -45,7 +45,7 @@ Route::group(['middleware' => []], function() {
  *
  *	Authenticated routes.
  */
-Route::group(['middleware' => ['auth:api']], function() {
+Route::group(['middleware' => ['auth:api', 'management']], function() {
 
 	/**
 	 *	/users

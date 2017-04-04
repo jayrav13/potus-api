@@ -16,5 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/documentation', function() {
-	return view('index');
+	return view('documentation');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

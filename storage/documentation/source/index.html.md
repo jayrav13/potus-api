@@ -6,6 +6,7 @@ language_tabs:
 
 toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='/home'>Return to API Portal</a>
 
 search: true
 ---
@@ -20,49 +21,13 @@ Authentication is done by registering a user with this API and using an API key 
 
 ## Register User
 
-> Register a user with the following request:
+To create a user, visit the [API Portal](/home) and register.
 
-```shell
-$ curl \
-    -i \
-    -X POST
-    https://potus-api.herokuapp.com/api/users \
-    -H "Content-Type: application/json" \
-    -d '{
-      "name": "Jay Ravaliya",
-      "email": "jayrav13@gmail.com",
-      "password": "password"
-    }'
-```
-
-> The above returns the following JSON:
-
-```json
-{
-  "user": {
-    "name": "Jay Ravaliya",
-    "email": "jayrav13@gmail.com",
-    "updated_at": "2017-03-25 05:09:33",
-    "created_at": "2017-03-25 05:09:33",
-    "id": 1
-  },
-  "api_token": "..."
-}
-```
-
-Register a user by sending a request to the endpoint `POST /api/users` with the following keys in a JSON object in the HTTP body:
-
-Parameter | Required | Description
---------- | ------- | -----------
-name | true | A name must be included.
-email | true | A valid email address must be included.
-password | true | min. 8, max. 16 characters.
-
-This request returns a token in the key `api_token` in the response. This token should then be used for all future requests through the HTTP header as follows:
+Once registered, you will have access to your `API Key`. This key should be used for all API requests using the following HTTP Header:
 
 `Authorization: Bearer ...`
 
-Where `...` represents the `api_token`.
+Where `...` represents the `API Key`.
 
 <aside class="warning">
 The documentation moving forward will <code>NOT</code> include this denoted header in examples, but this token will be required.

@@ -49,7 +49,7 @@ class BuildDocumentation extends Command
         else
         {
             echo "\nMove index.html to views.\n";
-            exec("mv storage/documentation/build/index.html resources/views/index.php");
+            exec("mv storage/documentation/build/index.html resources/views/documentation.blade.php");
 
             foreach(scandir("storage/documentation/build") as $dir)
             {

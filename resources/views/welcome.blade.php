@@ -79,15 +79,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    POTUS API
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/documentation">Documentation</a>
+                    <a href="https://twitter.com/presproject2017" target="_BLANK">Twitter</a>
+                    <a href="https://github.com/jayrav13/potus-api" target="_BLANK">GitHub</a>
                 </div>
             </div>
         </div>

@@ -39,7 +39,7 @@ class ScrapePresidents extends Command
     public function handle()
     {
         $output = [];
-        exec("python storage/scripts/presidents_scrape.py", $output);
+        exec("python storage/scripts/leadership/presidents_scrape.py", $output);
         $data = json_decode( implode(" ", $output) );
 
         foreach($data as $key => $value)

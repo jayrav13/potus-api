@@ -230,4 +230,11 @@ return [
 
     ],
 
+    /**
+     *
+     *  Custom App variables.
+     *
+     */
+    'title' => env("APP_TITLE", "Laravel"),
+
 ];

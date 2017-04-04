@@ -220,6 +220,7 @@
       </div>
         <ul class="toc-footer">
             <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='/home'>Return to API Portal</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -235,65 +236,13 @@
 
 <h2 id="register-user">Register User</h2>
 
-<blockquote>
-<p>Register a user with the following request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl <span class="se">\</span>
-    -i <span class="se">\</span>
-    -X POST
-    https://potus-api.herokuapp.com/api/users <span class="se">\</span>
-    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-    -d <span class="s1">'{
-      "name": "Jay Ravaliya",
-      "email": "jayrav13@gmail.com",
-      "password": "password"
-    }'</span>
-</code></pre>
-<blockquote>
-<p>The above returns the following JSON:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jay Ravaliya"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jayrav13@gmail.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-25 05:09:33"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-25 05:09:33"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"api_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Register a user by sending a request to the endpoint <code class="prettyprint">POST /api/users</code> with the following keys in a JSON object in the HTTP body:</p>
+<p>To create a user, visit the <a href="/home">API Portal</a> and register.</p>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>true</td>
-<td>A name must be included.</td>
-</tr>
-<tr>
-<td>email</td>
-<td>true</td>
-<td>A valid email address must be included.</td>
-</tr>
-<tr>
-<td>password</td>
-<td>true</td>
-<td>min. 8, max. 16 characters.</td>
-</tr>
-</tbody></table>
-
-<p>This request returns a token in the key <code class="prettyprint">api_token</code> in the response. This token should then be used for all future requests through the HTTP header as follows:</p>
+<p>Once registered, you will have access to your <code class="prettyprint">API Key</code>. This key should be used for all API requests using the following HTTP Header:</p>
 
 <p><code class="prettyprint">Authorization: Bearer ...</code></p>
 
-<p>Where <code class="prettyprint">...</code> represents the <code class="prettyprint">api_token</code>.</p>
+<p>Where <code class="prettyprint">...</code> represents the <code class="prettyprint">API Key</code>.</p>
 
 <aside class="warning">
 The documentation moving forward will <code>NOT</code> include this denoted header in examples, but this token will be required.
