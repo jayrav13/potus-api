@@ -29,7 +29,7 @@ def _parse_date_range(date_string):
 # Return current POTUS Approval Ratings.
 response = requests.get("https://en.wikipedia.org/wiki/United_States_presidential_approval_rating")
 tree = html.document_fromstring(response.text)
-polls = tree.xpath('//table[@class="wikitable"]')[0]
+polls = tree.xpath('//table[contains(@class, "wikitable")]')[0]
 
 # Set up simple variables for iterating and storing data.
 output = []
