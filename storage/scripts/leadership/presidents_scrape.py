@@ -45,7 +45,7 @@ for row in rows:
 		data = {
 			"presidency_url": base_url + row[0].xpath('a')[0].attrib['href'] if len(row[0].xpath('a')) > 0 else None,
 			"number": int(row[0].text_content()),
-			"image": "https" + row[2].xpath('a')[0].xpath('img')[0].attrib['src'],
+			"image": "https:" + row[2].xpath('a')[0].xpath('img')[0].attrib['src'],
 			"name": row[3].text_content().split("\n")[0],
 			"party_affiliation": row[6].xpath('a')[0].text_content().replace("\n", "") if len(row[6].xpath('a')) > 0 else None,
 			"previous_office": row[4].text_content().split("(")[0].replace("\n", " ").strip(),
