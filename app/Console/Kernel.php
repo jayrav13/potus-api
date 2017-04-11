@@ -18,6 +18,8 @@ class Kernel extends ConsoleKernel
         Commands\ScrapeCabinets::class,
         Commands\BuildDocumentation::class,
         Commands\ScrapePolls::class,
+        Commands\WHDocuments45::class,
+        Commands\WHDocuments44::class,
     ];
 
     /**

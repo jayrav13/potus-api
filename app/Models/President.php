@@ -30,4 +30,9 @@ class President extends Model
 		return $this->hasMany('App\Models\Poll', 'president_id', 'id');
 	}
 
+	public function document_types()
+	{
+		return $this->hasMany('App\Models\DocumentType', 'president_id', 'id');
+	}
+
 }
