@@ -41,7 +41,7 @@ Route::group(['middleware' => []], function() {
 });
 
 /**
- *	["middleware" => ["auth:api"]]
+ *	["middleware" => ["auth:api", "management"]]
  *
  *	Authenticated routes.
  */
@@ -107,6 +107,12 @@ Route::group(['middleware' => ['auth:api', 'management']], function() {
 
 		// Get all polls.
 		Route::get('/', "PollsController@index");
+
+	});
+
+	Route::group(['prefix' => 'documents'], function() {
+
+		Route::get('/', "DocumentsController@index");
 
 	});
 
