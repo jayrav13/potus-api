@@ -17,7 +17,7 @@ class DocumentsController extends Controller
 		{
 			App::abort(400, "Include HTTP parameter 'q' to search text.");
 		}
-		$documents = Document::where('title', 'like', '%' . Input::get('q') . '%');
+		$documents = Document::where('title', 'like', '%' . Input::get('q') . '%')->paginate(10)->appends(Input::all());
 		return Response::json($documents, 200);
 	}
 
